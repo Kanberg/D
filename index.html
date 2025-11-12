@@ -12,17 +12,50 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff4b91;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --light: #f8f9fa;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --error: #ff7675;
+        }
+
         body {
-            background: linear-gradient(135deg, #1e1e1e, #2d2d30);
-            color: #d4d4d4;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--light);
             min-height: 100vh;
             overflow-x: hidden;
         }
 
+        .header {
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            margin-bottom: 20px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
         .container {
             display: flex;
-            min-height: 100vh;
-            padding: 20px;
+            min-height: calc(100vh - 180px);
+            padding: 0 20px 20px;
             gap: 20px;
         }
 
@@ -30,10 +63,11 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            background: #252526;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: rgba(30, 30, 46, 0.8);
+            backdrop-filter: blur(10px);
             min-width: 0;
         }
 
@@ -41,17 +75,18 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            background: #252526;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: rgba(30, 30, 46, 0.8);
+            backdrop-filter: blur(10px);
             min-width: 0;
         }
 
         .panel-header {
             padding: 15px 20px;
-            background: #2d2d30;
-            border-bottom: 1px solid #3e3e3e;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -59,38 +94,40 @@
 
         .panel-title {
             font-weight: 600;
-            font-size: 16px;
-            color: #cccccc;
+            font-size: 18px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .btn {
-            background: #0e639c;
+            background: var(--accent);
             color: white;
             border: none;
             padding: 8px 16px;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 14px;
-            transition: all 0.2s;
+            transition: all 0.3s;
             margin-left: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .btn:hover {
-            background: #1177bb;
+            background: #ff2d7a;
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
         .btn:active {
-            background: #0c5485;
             transform: translateY(0);
         }
 
         .btn-secondary {
-            background: #5a5a5a;
+            background: var(--secondary);
         }
 
         .btn-secondary:hover {
-            background: #6a6a6a;
+            background: #1a67e8;
         }
 
         .editor-container {
@@ -102,8 +139,8 @@
         #code-editor {
             width: 100%;
             height: 100%;
-            background: #1e1e1e;
-            color: #d4d4d4;
+            background: rgba(22, 22, 36, 0.9);
+            color: #e2e2e2;
             border: none;
             padding: 20px 20px 20px 60px;
             font-family: 'Consolas', 'Monaco', monospace;
@@ -120,6 +157,7 @@
             position: relative;
             overflow: auto;
             padding: 0;
+            background: white;
         }
 
         #preview-frame {
@@ -131,17 +169,18 @@
 
         .status-bar {
             padding: 12px 20px;
-            background: #007acc;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             font-size: 13px;
             display: flex;
             justify-content: space-between;
+            border-radius: 0 0 15px 15px;
         }
 
         .console {
             height: 200px;
-            background: #1e1e1e;
-            border-top: 1px solid #3e3e3e;
+            background: rgba(22, 22, 36, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding: 15px;
             font-family: 'Consolas', monospace;
             font-size: 14px;
@@ -154,34 +193,35 @@
         }
 
         .console-error {
-            color: #f48771;
+            color: var(--error);
         }
 
         .theme-toggle {
             background: transparent;
-            border: 1px solid #3e3e3e;
-            color: #cccccc;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
             padding: 6px 12px;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 13px;
-            transition: all 0.2s;
+            transition: all 0.3s;
         }
 
         .theme-toggle:hover {
-            background: #3e3e3e;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .suggestions {
             position: absolute;
-            background: #252526;
-            border: 1px solid #3e3e3e;
+            background: rgba(37, 37, 50, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             max-height: 200px;
             overflow-y: auto;
             z-index: 100;
             display: none;
-            border-radius: 5px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
         }
 
         .suggestion-item {
@@ -189,7 +229,7 @@
             cursor: pointer;
             font-family: 'Consolas', monospace;
             font-size: 14px;
-            border-bottom: 1px solid #3e3e3e;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .suggestion-item:last-child {
@@ -197,7 +237,7 @@
         }
 
         .suggestion-item:hover {
-            background: #2a2d2e;
+            background: rgba(106, 17, 203, 0.3);
         }
 
         .line-numbers {
@@ -206,14 +246,14 @@
             top: 0;
             width: 50px;
             height: 100%;
-            background: #1e1e1e;
-            color: #858585;
+            background: rgba(22, 22, 36, 0.9);
+            color: #6c757d;
             text-align: right;
             padding: 20px 5px;
             font-family: 'Consolas', monospace;
             font-size: 15px;
             line-height: 1.6;
-            border-right: 1px solid #3e3e3e;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
             user-select: none;
             overflow: hidden;
         }
@@ -222,10 +262,10 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #0e639c;
+            background: var(--success);
             color: white;
             padding: 12px 18px;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 14px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             display: none;
@@ -233,24 +273,8 @@
             transition: opacity 0.3s;
         }
 
-        .header {
-            padding: 20px;
-            text-align: center;
-            background: linear-gradient(135deg, #007acc, #0e639c);
-            color: white;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            font-size: 16px;
-            opacity: 0.9;
+        .notification.error {
+            background: var(--error);
         }
 
         .examples {
@@ -259,106 +283,32 @@
             margin-bottom: 20px;
             flex-wrap: wrap;
             justify-content: center;
+            padding: 0 20px;
         }
 
         .example-btn {
-            background: #383838;
-            color: #cccccc;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
             border: none;
             padding: 10px 15px;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 14px;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .example-btn:hover {
-            background: #484848;
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
         .footer {
             text-align: center;
             padding: 20px;
-            color: #858585;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 14px;
             margin-top: 20px;
-        }
-
-        /* Стили для светлой темы */
-        body.light-theme {
-            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
-            color: #333333;
-        }
-
-        body.light-theme .editor-panel,
-        body.light-theme .preview-panel {
-            background: #ffffff;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        body.light-theme .panel-header {
-            background: #f0f0f0;
-            border-bottom: 1px solid #dddddd;
-        }
-
-        body.light-theme .panel-title {
-            color: #555555;
-        }
-
-        body.light-theme #code-editor {
-            background: #ffffff;
-            color: #333333;
-        }
-
-        body.light-theme .line-numbers {
-            background: #f5f5f5;
-            color: #666666;
-            border-right: 1px solid #dddddd;
-        }
-
-        body.light-theme .console {
-            background: #f9f9f9;
-            border-top: 1px solid #dddddd;
-        }
-
-        body.light-theme .console-output {
-            color: #333333;
-        }
-
-        body.light-theme .status-bar {
-            background: #0e639c;
-        }
-
-        body.light-theme .theme-toggle {
-            border: 1px solid #dddddd;
-            color: #555555;
-        }
-
-        body.light-theme .theme-toggle:hover {
-            background: #eeeeee;
-        }
-
-        body.light-theme .suggestions {
-            background: #ffffff;
-            border: 1px solid #dddddd;
-        }
-
-        body.light-theme .suggestion-item {
-            border-bottom: 1px solid #eeeeee;
-        }
-
-        body.light-theme .suggestion-item:hover {
-            background: #f5f5f5;
-        }
-
-        body.light-theme .example-btn {
-            background: #e0e0e0;
-            color: #555555;
-        }
-
-        body.light-theme .example-btn:hover {
-            background: #d0d0d0;
         }
 
         /* Анимации */
@@ -382,65 +332,75 @@
                 min-height: 500px;
             }
         }
+
+        .python-keyword {
+            color: #ff79c6;
+        }
+
+        .python-string {
+            color: #f1fa8c;
+        }
+
+        .python-comment {
+            color: #6272a4;
+        }
+
+        .python-function {
+            color: #50fa7b;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Супер-редактор Python</h1>
+        <h1>🐍 Супер-редактор Python</h1>
         <p>Пишите код и сразу видите результат. Поддержка графики, игр и многое другое!</p>
     </div>
 
     <div class="examples">
-        <button class="example-btn" data-example="hello">Привет, мир!</button>
-        <button class="example-btn" data-example="graphics">Графика Turtle</button>
-        <button class="example-btn" data-example="game">Простая игра</button>
-        <button class="example-btn" data-example="math">Математика</button>
-        <button class="example-btn" data-example="animation">Анимация</button>
+        <button class="example-btn" data-example="hello">👋 Привет, мир!</button>
+        <button class="example-btn" data-example="graphics">🎨 Графика Turtle</button>
+        <button class="example-btn" data-example="game">🎮 Простая игра</button>
+        <button class="example-btn" data-example="math">🧮 Математика</button>
+        <button class="example-btn" data-example="animation">✨ Анимация</button>
     </div>
 
     <div class="container">
         <div class="editor-panel">
             <div class="panel-header">
-                <div class="panel-title">РЕДАКТОР PYTHON</div>
+                <div class="panel-title">✏️ РЕДАКТОР PYTHON</div>
                 <div>
-                    <button id="run-btn" class="btn">Запуск (Ctrl+Enter)</button>
-                    <button id="clear-btn" class="btn btn-secondary">Очистить</button>
-                    <button id="theme-btn" class="theme-toggle">Тёмная тема</button>
+                    <button id="run-btn" class="btn">🚀 Запуск (Ctrl+Enter)</button>
+                    <button id="clear-btn" class="btn btn-secondary">🗑️ Очистить</button>
+                    <button id="theme-btn" class="theme-toggle">🌙 Тёмная тема</button>
                 </div>
             </div>
             <div class="editor-container">
                 <div class="line-numbers" id="line-numbers">1</div>
-                <textarea id="code-editor" spellcheck="false" placeholder="Введите код Python здесь..."># Добро пожаловать в супер-редактор Python!
-# Напишите свой код и нажмите "Запуск" или Ctrl+Enter
-
-# Простой пример
+                <textarea id="code-editor" spellcheck="false" placeholder="Введите код Python здесь..."># Простой пример Hello World
 print("Привет, мир!")
 
-# Графика с помощью Turtle
-import turtle
+# Работа с переменными
+name = "Пользователь"
+age = 25
+print(f"Меня зовут {name} и мне {age} лет")
 
-t = turtle.Turtle()
-t.speed(0)
-t.color("blue")
-
-for i in range(36):
-    t.circle(100)
-    t.right(10)
-
-turtle.done()</textarea>
+# Список и цикл
+fruits = ["яблоко", "банан", "апельсин"]
+for fruit in fruits:
+    print(f"Фрукт: {fruit}")</textarea>
                 <div class="suggestions" id="suggestions"></div>
             </div>
             <div class="console">
-                <div class="panel-title" style="margin-bottom: 10px;">КОНСОЛЬ ВЫВОДА</div>
+                <div class="panel-title" style="margin-bottom: 10px;">📊 КОНСОЛЬ ВЫВОДА</div>
                 <div id="console-output" class="console-output"></div>
             </div>
         </div>
         <div class="preview-panel">
             <div class="panel-header">
-                <div class="panel-title">ПРЕДПРОСМОТР</div>
+                <div class="panel-title">👁️ ПРЕДПРОСМОТР</div>
                 <div>
-                    <button id="fullscreen-btn" class="btn">Полный экран</button>
-                    <button id="refresh-btn" class="btn btn-secondary">Обновить</button>
+                    <button id="fullscreen-btn" class="btn">📺 Полный экран</button>
+                    <button id="refresh-btn" class="btn btn-secondary">🔄 Обновить</button>
                 </div>
             </div>
             <div class="preview-container">
@@ -450,7 +410,7 @@ turtle.done()</textarea>
     </div>
 
     <div class="status-bar">
-        <div>Супер-редактор Python | Готов к работе</div>
+        <div>✅ Супер-редактор Python | Готов к работе</div>
         <div id="status-info">Python 3.9 | Pyodide 0.21.3</div>
     </div>
 
@@ -527,7 +487,6 @@ turtle.done()`,
 
             game: `# Простая игра "Угадай число"
 import random
-import time
 
 print("=== ИГРА 'УГАДАЙ ЧИСЛО' ===")
 print("Компьютер загадал число от 1 до 100")
@@ -588,6 +547,7 @@ print(f"Число e = {math.e:.5f}")`,
             animation: `# Анимация с Turtle
 import turtle
 import time
+import math
 
 # Настройка экрана
 screen = turtle.Screen()
@@ -610,7 +570,7 @@ for i in range(6):
 
 # Анимация
 angle = 0
-while angle < 360:
+for _ in range(360):
     for i, t in enumerate(turtles):
         # Вычисляем позицию для каждой черепашки
         x = 200 * math.cos(math.radians(angle + i * 60))
@@ -654,6 +614,9 @@ print("Анимация завершена!")`
                 
                 statusInfo.textContent = "Python 3.9 | Pyodide 0.21.3 | Готов";
                 showNotification("Pyodide загружен и готов к работе!");
+                
+                // Запускаем начальный код
+                runCode();
             } catch (error) {
                 statusInfo.textContent = "Ошибка загрузки Pyodide";
                 showNotification("Ошибка при загрузке Pyodide: " + error.message, true);
@@ -663,8 +626,8 @@ print("Анимация завершена!")`
         // Показ уведомления
         function showNotification(message, isError = false) {
             notification.textContent = message;
+            notification.className = isError ? "notification error" : "notification";
             notification.style.display = 'block';
-            notification.style.background = isError ? '#c42b1c' : '#0e639c';
             
             setTimeout(() => {
                 notification.style.display = 'none';
@@ -712,238 +675,4 @@ print("Анимация завершена!")`
             }
             
             const code = codeEditor.value;
-            consoleOutput.innerHTML = '';
-            statusInfo.textContent = "Выполнение...";
-            
-            try {
-                // Очищаем предыдущий вывод turtle, если он есть
-                const previewDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
-                previewDoc.open();
-                previewDoc.write(`
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                        <title>Python Preview</title>
-                        <style>
-                            body { 
-                                margin: 0; 
-                                padding: 20px; 
-                                background: white; 
-                                font-family: Arial, sans-serif; 
-                                min-height: 100vh;
-                            }
-                            canvas { 
-                                border: 1px solid #ccc; 
-                                margin: 10px 0;
-                            }
-                            .output {
-                                white-space: pre-wrap;
-                                font-family: monospace;
-                                background: #f5f5f5;
-                                padding: 10px;
-                                border-radius: 5px;
-                                margin: 10px 0;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <div id="output"></div>
-                    </body>
-                    </html>
-                `);
-                previewDoc.close();
-                
-                // Выполняем код Python
-                await pyodide.runPythonAsync(code);
-                statusInfo.textContent = "Python 3.9 | Pyodide 0.21.3 | Выполнено";
-                showNotification("Код выполнен успешно!");
-            } catch (error) {
-                consoleOutput.innerHTML += `<div class="console-error">Ошибка: ${error.message}</div>`;
-                statusInfo.textContent = "Python 3.9 | Pyodide 0.21.3 | Ошибка";
-                showNotification("Произошла ошибка выполнения!", true);
-            }
-        }
-
-        // Очистка редактора и вывода
-        function clearAll() {
-            if (confirm("Очистить редактор и вывод?")) {
-                codeEditor.value = '';
-                consoleOutput.innerHTML = '';
-                updateLineNumbers();
-                
-                const previewDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
-                previewDoc.open();
-                previewDoc.write('<html><body style="background:white; padding:20px;"><h3>Предпросмотр</h3><p>Запустите код, чтобы увидеть результат здесь.</p></body></html>');
-                previewDoc.close();
-                
-                showNotification("Редактор и вывод очищены");
-            }
-        }
-
-        // Переключение темы
-        function toggleTheme() {
-            const body = document.body;
-            const isDark = !body.classList.contains('light-theme');
-            
-            if (isDark) {
-                body.classList.add('light-theme');
-                themeBtn.textContent = 'Тёмная тема';
-            } else {
-                body.classList.remove('light-theme');
-                themeBtn.textContent = 'Светлая тема';
-            }
-        }
-
-        // Полноэкранный режим для предпросмотра
-        function toggleFullscreen() {
-            const previewContainer = document.querySelector('.preview-container');
-            
-            if (!document.fullscreenElement) {
-                if (previewContainer.requestFullscreen) {
-                    previewContainer.requestFullscreen();
-                } else if (previewContainer.webkitRequestFullscreen) {
-                    previewContainer.webkitRequestFullscreen();
-                } else if (previewContainer.msRequestFullscreen) {
-                    previewContainer.msRequestFullscreen();
-                }
-                fullscreenBtn.textContent = 'Выйти из полного экрана';
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
-                }
-                fullscreenBtn.textContent = 'Полный экран';
-            }
-        }
-
-        // Обновление предпросмотра
-        function refreshPreview() {
-            const previewDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
-            previewDoc.location.reload();
-            showNotification("Предпросмотр обновлен");
-        }
-
-        // Загрузка примера кода
-        function loadExample(exampleKey) {
-            if (codeExamples[exampleKey]) {
-                codeEditor.value = codeExamples[exampleKey];
-                updateLineNumbers();
-                showNotification(`Загружен пример: ${exampleKey}`);
-            }
-        }
-
-        // Простые подсказки для кода
-        const pythonKeywords = [
-            'print', 'def', 'class', 'if', 'else', 'elif', 'for', 'while', 
-            'import', 'from', 'as', 'return', 'try', 'except', 'with', 
-            'True', 'False', 'None', 'and', 'or', 'not', 'in', 'is'
-        ];
-
-        function showSuggestions() {
-            const cursorPos = codeEditor.selectionStart;
-            const textBeforeCursor = codeEditor.value.substring(0, cursorPos);
-            const currentLine = textBeforeCursor.split('\n').pop();
-            
-            // Простая логика для показа подсказок
-            const wordMatch = currentLine.match(/\b(\w+)$/);
-            if (wordMatch) {
-                const currentWord = wordMatch[1];
-                const matches = pythonKeywords.filter(keyword => 
-                    keyword.startsWith(currentWord)
-                );
-                
-                if (matches.length > 0) {
-                    suggestions.innerHTML = '';
-                    matches.forEach(match => {
-                        const item = document.createElement('div');
-                        item.className = 'suggestion-item';
-                        item.textContent = match;
-                        item.addEventListener('click', () => {
-                            const before = textBeforeCursor.substring(0, textBeforeCursor.length - currentWord.length);
-                            const after = codeEditor.value.substring(cursorPos);
-                            codeEditor.value = before + match + after;
-                            codeEditor.focus();
-                            codeEditor.selectionStart = codeEditor.selectionEnd = before.length + match.length;
-                            suggestions.style.display = 'none';
-                        });
-                        suggestions.appendChild(item);
-                    });
-                    
-                    const rect = codeEditor.getBoundingClientRect();
-                    const lineHeight = parseInt(getComputedStyle(codeEditor).lineHeight);
-                    const lineIndex = (codeEditor.value.substring(0, cursorPos).match(/\n/g) || []).length;
-                    const top = rect.top + (lineIndex * lineHeight) - codeEditor.scrollTop + 30;
-                    
-                    suggestions.style.top = top + 'px';
-                    suggestions.style.left = (rect.left + 50) + 'px';
-                    suggestions.style.display = 'block';
-                    return;
-                }
-            }
-            
-            suggestions.style.display = 'none';
-        }
-
-        // Инициализация редактора
-        function initializeEditor() {
-            updateLineNumbers();
-            
-            // Обработчики событий
-            codeEditor.addEventListener('input', updateLineNumbers);
-            codeEditor.addEventListener('input', showSuggestions);
-            codeEditor.addEventListener('click', () => suggestions.style.display = 'none');
-            
-            runBtn.addEventListener('click', runCode);
-            clearBtn.addEventListener('click', clearAll);
-            themeBtn.addEventListener('click', toggleTheme);
-            fullscreenBtn.addEventListener('click', toggleFullscreen);
-            refreshBtn.addEventListener('click', refreshPreview);
-            
-            // Обработчики для примеров кода
-            exampleBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const example = btn.getAttribute('data-example');
-                    loadExample(example);
-                });
-            });
-            
-            // Инициализация Pyodide
-            initializePyodide();
-            
-            // Инициализация предпросмотра
-            const previewDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
-            previewDoc.open();
-            previewDoc.write(`
-                <html>
-                <head>
-                    <title>Python Preview</title>
-                    <style>
-                        body { 
-                            margin: 0; 
-                            padding: 20px; 
-                            background: white; 
-                            font-family: Arial, sans-serif; 
-                            min-height: 100vh;
-                        }
-                        h3 { color: #333; }
-                        p { color: #666; }
-                    </style>
-                </head>
-                <body>
-                    <h3>Область предпросмотра</h3>
-                    <p>Запустите код Python, чтобы увидеть результат здесь.</p>
-                    <p>Вы можете создавать графику, игры, анимации и многое другое!</p>
-                </body>
-                </html>
-            `);
-            previewDoc.close();
-        }
-
-        // Запуск инициализации при загрузке страницы
-        document.addEventListener('DOMContentLoaded', initializeEditor);
-    </script>
-</body>
-</html>
+            consoleOutput.inner
